@@ -31,6 +31,8 @@ history = []
 chat = model.start_chat(history=history)
 
 
+
+
 # Route to receive voice input from the HTML file
 @app.route('/gemini', methods=['POST'])
 def receive_voice_input():
