@@ -36,6 +36,10 @@ chat = model.start_chat(history=history)
 def query():
     return render_template('frontend.html')
 
+@app.route('/whack', methods=['GET'])
+def whack():
+    return render_template('whackmole.html')
+
 # Route to receive voice input from the HTML file
 @app.route('/gemini', methods=['POST'])
 def receive_voice_input():

@@ -52,7 +52,7 @@ function setPlant() {
         currPlantTile.innerHTML = "";
     }
     let plant = document.createElement("img");
-    plant.src = "./piranha-plant.png";
+    plant.src = "static/piranha-plant.png";
 
     let num = getRandomTile();
     if (currMoleTile && currMoleTile.id == num) {
