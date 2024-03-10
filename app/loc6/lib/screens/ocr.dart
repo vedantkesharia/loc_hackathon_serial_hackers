@@ -8,16 +8,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 // import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
-class ObjectLens extends StatefulWidget {
+class OcrLens extends StatefulWidget {
   @override
-  State<ObjectLens> createState() => _ObjectLensState();
+  State<OcrLens> createState() => _OcrLensState();
 }
 
-class _ObjectLensState extends State<ObjectLens> {
+class _OcrLensState extends State<OcrLens> {
   FlutterTts flutterTts = FlutterTts();
   ui.Image? _image;
   final ImagePicker _picker = ImagePicker();
   List<DetectedObject> _detectedObjects = [];
+  String _final_text = "";
   final ImageLabeler imageLabeler = GoogleMlKit.vision.imageLabeler(
     ImageLabelerOptions(confidenceThreshold: 0.8),
   );
@@ -56,6 +57,7 @@ class _ObjectLensState extends State<ObjectLens> {
         setState(() {
           _image = image;
           _detectedObjects = [];
+          _final_text = "";
         });
         _detectObjects(image, path);
       }
@@ -81,6 +83,7 @@ class _ObjectLensState extends State<ObjectLens> {
         setState(() {
           _image = image;
           _detectedObjects = [];
+          _final_text = "";
         });
         _detectObjects(image, path);
       }
@@ -105,10 +108,13 @@ class _ObjectLensState extends State<ObjectLens> {
 
     final _objectDetector =
     GoogleMlKit.vision.objectDetector(options: options);
+    final _textDetector =
+    GoogleMlKit.vision.textRecognizer();
 
     final inputImage = InputImage.fromFilePath(path);
     final imageLabels = await imageLabeler.processImage(inputImage);
     // final objectLabels = await _objectDetector.processImage(inputImage);
+    final recognized_text = await _textDetector.processImage(inputImage);
     String objectsstr = "";
     for (final label in imageLabels) {
       print('Label: ${label.label}, Confidence: ${label.confidence}');
@@ -119,7 +125,8 @@ class _ObjectLensState extends State<ObjectLens> {
     }
 
     try {
-      flutterTts.speak("Objects in image are: "+objectsstr);
+      flutterTts.speak("Text is: "+recognized_text.text);
+      print("Text is: "+recognized_text.text);
     } on Exception catch (e) {
       // TODO
       print(e.toString());
@@ -133,6 +140,7 @@ class _ObjectLensState extends State<ObjectLens> {
 
     setState(() {
       _detectedObjects = objects;
+      _final_text = recognized_text.text;
     });
   }
 
@@ -148,7 +156,7 @@ class _ObjectLensState extends State<ObjectLens> {
         title: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Text(
-            "Object Recogniser",
+            "Text Recogniser",
             style: const TextStyle(
               color: Colors.orange,
               fontSize: 34.0,
@@ -166,7 +174,7 @@ class _ObjectLensState extends State<ObjectLens> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 150.0, left: 50),
-                  child: Image.asset('assets/images/empty_state.png'),
+                  child: Image.asset('assets/images/empty_text.png'),
                 ),
                 InkWell(
                   highlightColor: Colors.orange,
@@ -183,8 +191,8 @@ class _ObjectLensState extends State<ObjectLens> {
                 ),
                 InkWell(
                   //onTap: _getImage,
-                  child: Icon(Icons.camera_alt_rounded)
-                  ),
+                    child: Icon(Icons.camera_alt_rounded)
+                ),
               ],
             )
                 : FittedBox(
@@ -205,34 +213,36 @@ class _ObjectLensState extends State<ObjectLens> {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               children: [
-                ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: labelName.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          ListTile(
-                            title: Text(
-                              labelName[index],
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            subtitle: Text(
-                              "Confidence: ${confidence[index]}",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            color: Colors.grey,
-                          )
-                        ],
-                      );
-                    }),
+                // ListView.builder(
+                //     shrinkWrap: true,
+                //     physics: NeverScrollableScrollPhysics(),
+                //     itemCount: labelName.length,
+                //     itemBuilder: (context, index) {
+                //       return Column(
+                //         children: [
+                //           ListTile(
+                //             title: Text(
+                //               labelName[index],
+                //               style: TextStyle(
+                //                 fontSize: 20,
+                //                 fontWeight: FontWeight.bold,
+                //               ),
+                //             ),
+                //             subtitle: Text(
+                //               "Confidence: ${confidence[index]}",
+                //               style: TextStyle(
+                //                 color: Colors.white,
+                //               ),
+                //             ),
+                //           ),
+                //           Divider(
+                //             color: Colors.grey,
+                //           )
+                //         ],
+                //       );
+                //     }),
+                SizedBox(height: 30,),
+                Center(child:Text(_final_text)),
                 SizedBox(
                   height: 70,
                 ),

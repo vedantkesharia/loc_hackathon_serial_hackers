@@ -3,7 +3,10 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:loc6/screens/HomeScreen/home_screen.dart';
 import 'package:loc6/screens/ObjectRecognition/camera.dart';
 import 'package:loc6/screens/ObjectRecognition/object_recognition.dart';
+import 'package:loc6/screens/ocr.dart';
 import 'package:loc6/screens/outdoor.dart';
+import 'package:loc6/screens/speech_to_text.dart';
+import 'package:loc6/screens/web_view.dart';
 import 'package:loc6/sizeconfig.dart';
 
 
@@ -19,7 +22,10 @@ class _Bottom_NavState extends State<Bottom_Nav> {
   final List<Widget> _pages = [
     HomeScreen(),
     ObjectLens(),
+    OcrLens(),
     Outdoor(),
+    SignWebView(),
+    SpeechText(),
   ];
 
   void _onitemtapped(int index){
@@ -46,7 +52,7 @@ class _Bottom_NavState extends State<Bottom_Nav> {
           backgroundColor: Colors.black,
           color: Colors.white,
           activeColor: Colors.white,
-          gap: 8,
+          gap: 3,
           tabBackgroundColor: Colors.grey.shade900,
           padding: EdgeInsets.all(12),
           selectedIndex: _selectedIndex,
@@ -61,8 +67,20 @@ class _Bottom_NavState extends State<Bottom_Nav> {
               text: "Look around",
             ),
             GButton(
+              icon: Icons.text_fields,
+              text: "Detect text",
+            ),
+            GButton(
               icon: Icons.location_on,
               text: "Locate",
+            ),
+            GButton(
+              icon: Icons.sign_language,
+              text: "Sign",
+            ),
+            GButton(
+              icon: Icons.keyboard_voice_rounded,
+              text: "Audio to text",
             ),
           ],
         ),

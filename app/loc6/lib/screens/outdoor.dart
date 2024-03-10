@@ -11,8 +11,7 @@ class Outdoor extends StatefulWidget {
 class _OutdoorState extends State<Outdoor> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
@@ -163,7 +162,6 @@ class _OutdoorState extends State<Outdoor> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

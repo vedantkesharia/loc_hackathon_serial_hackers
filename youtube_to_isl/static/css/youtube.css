@@ -6,17 +6,252 @@ body{
     box-sizing: border-box;
 }
 
+.nav-container {
+    display: flex;
+    padding: 1rem;
+    background-image: linear-gradient(to top, #dadde0, #EEEDE7);
+    font-size: 1.1rem;
+    z-index: 1;
+    height: 15vh;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    margin-left: 0.5%;
+}
+
+.logo img {
+    width: 50%;
+}
+
+.other--links {
+    width: calc(100% - 30%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.other--links ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.others {
+    text-align: center;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    margin: 0 1rem;
+    border-radius: 5px;
+    color: #363636;
+    font-family: "Roboto Slab", serif;
+    font-weight: 900;
+    letter-spacing: 0.15rem;
+}
+
+.others:hover,
+.others:active,
+.others:focus {
+    background-color: #363636 !important;
+    color: #EEEDE7 !important;
+    font-weight: 600 !important;
+}
+
+.dropbtn:hover,
+.dropbtn:active,
+.dropbtn:focus {
+    background-color: #363636 !important;
+    color: #EEEDE7 !important;
+    font-weight: 600 !important;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden !important;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: #363636;
+    font-family: "Roboto Slab", serif;
+    font-weight: 900;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    margin: 0;
+    border-radius: 5px;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.dropbtn img {
+    width: 0.9rem;
+}
+
+.dropdown:hover .dropbtn,
+.dropdown-content button a:hover {
+    background-color: #363636 !important;
+    color: #EEEDE7 !important;
+    font-weight: 600 !important;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 8.5%;
+    background-color: #EEEDE7;
+    width: 15%;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    z-index: 999;
+}
+
+.dropdown-content button{
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #363636;
+    font-size: 1.1rem;
+    font-family: "Roboto Slab", serif;
+    font-weight: 600;
+    background-color: #EEEDE7;
+}
+
+.dropdown-content button a {
+    float: none;
+    display: block;
+    text-decoration: none;
+    color: #363636;
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.dropdown-content button:hover {
+    background-color: #ddd;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* here */
+
+/* Dropdown container */
+.dropdown1 {
+    position: static;
+    display: inline-block;
+    z-index: 2;
+}
+
+/* Dropdown button */
+.dropbtn1 :hover{
+    background-color: #363636 !important;
+    color:white;
+}
+
+.dropbtn1 {
+    background-color: inherit;
+    color: #363636;
+    font-family: "Roboto Slab", serif;
+    font-weight: 900;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    margin: 0;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropbtn1:hover {
+    background-color: #363636;
+    color: #EEEDE7;
+    font-weight: 600;
+}
+.dropbtn1 img {
+    width: 0.9rem;
+}
+
+/* Dropdown content */
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: #EEEDE7;
+    min-width: 20%;
+    border-radius: 20px;
+    z-index: 1;
+    flex-direction: column;
+    /* top: auto; */
+    /* left: 0; */
+}
+
+/* Dropdown options */
+.dropdown-content1 button a {
+    color: #363636;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    display: block;
+    float: none;
+}
+
+.dropdown-content1 button{
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #363636;
+    font-size: 1.1rem;
+    font-family: "Roboto Slab", serif;
+    font-weight: 600;
+    background-color: #EEEDE7;
+}
+
+/* Show dropdown content on hover */
+.dropdown1:hover .dropdown-content1 {
+    display: flex; 
+}
+
+/* Style the dropdown options on hover */
+.dropdown-content1 button a:hover {
+    background-color: #363636;
+    color: #EEEDE7;
+}
+
+.optional1:hover{
+    background-color: #363636;
+    color:#dadde0;
+}
+
+
+/* here */
+
+/* jhjlkgljkgl */
 .textContainerMain{
     display: flex;
 }
 
 .mainContainer{
     width: 50%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.englishInput{
+    text-align: center;
 }
 
 .inputText{
@@ -25,23 +260,25 @@ body{
     font-weight: 500;
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 2rem;
     letter-spacing: 0.08rem;
     word-spacing: 0.2rem;
+    margin-top: 1rem;
 }
 
 .inputText span{
     color: #fc9f32;
 }
 
-textarea{
+#text{
     border: 1px solid grey;
-    border-radius: 10px;
+    border-radius: 5px;
+    width: 60%;
+    margin: 0.5rem;
 }
 
 .inputSubmit{
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 .inputSubmit button{
@@ -52,9 +289,13 @@ textarea{
     color: #fef9f7;
     font-family: "Roboto Slab", serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border: none;
     box-shadow: 2px 2px 10px 2px rgb(185, 184, 184);
+}
+
+.yt_video{
+    text-align: center;
 }
 
 .curr_playing{
@@ -62,7 +303,6 @@ textarea{
     font-family: "Roboto Slab", serif;
     font-weight: 500;
     font-size: 1.3rem;
-    margin-top: 1.5rem;
 }
 
 .curr_word_playing{
@@ -70,7 +310,6 @@ textarea{
     font-family: "Roboto Slab", serif;
     font-weight: 400;
     font-size: 1rem;
-    margin: 1rem auto;
 }
 
 .islOutput{
@@ -85,7 +324,6 @@ textarea{
     font-family: "Roboto Slab", serif;
     font-weight: 400;
     font-size: 1rem;
-    margin: 1rem auto;
 }
 
 .main{
@@ -97,10 +335,11 @@ textarea{
     justify-content: center;
 }
 
-/* .containertext{
-    border: 5px solid black;
-    height: 100%;
-}*/
+.containertext{
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
 
 .container{
     height: auto;

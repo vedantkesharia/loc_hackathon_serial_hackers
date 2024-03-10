@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel='stylesheet' type='text/css' media='screen' href="{{url_for('static',filename='./style.css')}}">
- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- <link rel="stylesheet" href="http://vhg.cmp.uea.ac.uk/tech/jas/vhg2021/cwa/cwasa.css" /> -->
     <!-- <script type="text/javascript" src="http://vhg.cmp.uea.ac.uk/tech/jas/vhg2021/cwa/allcsa.js"></script> -->
  
@@ -125,11 +125,35 @@ function startPlayer(sigmlURL) {
     CWASA.getLogger("myLog","warn");
 }
 </script>
+<!-- navbar starts -->
+<div class="nav-container">
+    <div class="logo">
+        <a href="{{ url_for('home') }}"><img src="./images/logo.png" alt="Logo"></a>
+    </div>
+    <div class="other--links">
+        <ul>
+            <li><a class="others" href="#">HOME</a></li>
+            <li><div class="dropdown1">
+                <button class="dropbtn1">CONVERT
+                    <img src="./images/down.png" id="down" alt="">
+                </button>
+                <div class="dropdown-content1">
+                  <button class="optional1"><a href="{{ url_for('youtube') }}">YouTube to ISL</a></button>
+                  <button class="optional1"><a href="#">Audio To ISL</a></button>
+                  <button class="optional1"><a href="{{ url_for('index') }}">Text to ISL</a></button>
+                  <button class="optional1"><a href="{{ url_for('learn') }}">Learn ISL</a></button>
+                </div>
+              </div></li>
+        </ul>
+    </div>
+    <!-- <div class="donation"><a href="#">Donate Now</a></div> -->
+</div>
+<!-- navbar ends -->
 <div class="audioContainer">
     <div class="mainContainer">
         <div class="englishInput">
             <form method="POST" id= 'form'>
-                    <button id="submit">Speech to Text</button> &nbsp; <span id="action"></span>
+                    <button id="submit"><i class="fas fa-microphone"></i></button> &nbsp; <span id="action"></span>
                 </form>
             <!-- <button class="btn-primary bttnPlaySiGMLURL av0">Submit</button> -->
             <!-- <input type="button" value="Sign" class="bttnPlaySiGMLURL av0" /> -->
