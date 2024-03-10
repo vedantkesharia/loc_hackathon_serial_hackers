@@ -40,6 +40,10 @@ def query():
 def whack():
     return render_template('whackmole.html')
 
+@app.route('/memory', methods=['GET'])
+def memory():
+    return render_template('memory.html')
+
 # Route to receive voice input from the HTML file
 @app.route('/gemini', methods=['POST'])
 def receive_voice_input():
