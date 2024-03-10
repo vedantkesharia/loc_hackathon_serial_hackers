@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import google.generativeai as genai
 import os
@@ -32,6 +32,9 @@ chat = model.start_chat(history=history)
 
 
 
+@app.route('/query', methods=['GET'])
+def query():
+    return render_template('frontend.html')
 
 # Route to receive voice input from the HTML file
 @app.route('/gemini', methods=['POST'])
@@ -43,6 +46,7 @@ def receive_voice_input():
     ai_response = response.text
     return jsonify({'ai_response': ai_response})
 
+
 @app.route('/wiki_summary', methods=['POST'])
 def get_wikipedia_summary():
     data = request.json
@@ -52,4 +56,4 @@ def get_wikipedia_summary():
     return jsonify({'summary': summary})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8001)
