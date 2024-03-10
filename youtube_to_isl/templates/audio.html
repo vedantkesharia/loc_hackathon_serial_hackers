@@ -126,29 +126,43 @@ function startPlayer(sigmlURL) {
 }
 </script>
 <!-- navbar starts -->
+<!-- navbar starts -->
 <div class="nav-container">
     <div class="logo">
-        <a href="{{ url_for('home') }}"><img src="./images/logo.png" alt="Logo"></a>
+        <a href="#"><img src="./images/logo.png" alt="Logo"></a>
     </div>
     <div class="other--links">
         <ul>
             <li><a class="others" href="#">HOME</a></li>
-            <li><div class="dropdown1">
-                <button class="dropbtn1">CONVERT
+            <li><a class="others" href="http://127.0.0.1:8001/query">FOR VISUALLY IMPAIRED</a></li>
+            <li><div class="dropdown">
+                <button class="dropbtn">FOR DYSLEXIA
                     <img src="./images/down.png" id="down" alt="">
                 </button>
-                <div class="dropdown-content1">
-                  <button class="optional1"><a href="{{ url_for('youtube') }}">YouTube to ISL</a></button>
-                  <button class="optional1"><a href="#">Audio To ISL</a></button>
-                  <button class="optional1"><a href="{{ url_for('index') }}">Text to ISL</a></button>
-                  <button class="optional1"><a href="{{ url_for('learn') }}">Learn ISL</a></button>
-                  <button><a href="{{ url_for('query') }}">Query</a></button>
+                <div class="dropdown-content">
+                  <button><a href="http://127.0.0.1:8001/whack">WHACK A MOLE</a></button>
+                  <button><a href="http://127.0.0.1:8001/memory">MEMORY GAME</a></button>
+        
+                </div>
+              </div></li>
+            <li><div class="dropdown">
+                <button class="dropbtn">SIGN FOR DEAF
+                    <img src="./images/down.png" id="down" alt="">
+                </button>
+                <div class="dropdown-content">
+                  <button><a href="{{ url_for('youtube') }}">YouTube to ISL</a></button>
+                  <button><a href="{{ url_for('audio_to_text') }}">Audio To ISL</a></button>
+                  <button><a href="{{ url_for('index') }}">Text to ISL</a></button>
+                  <button><a href="{{ url_for('learn') }}">Learn ISL</a></button>
+        
                 </div>
               </div></li>
         </ul>
     </div>
     <!-- <div class="donation"><a href="#">Donate Now</a></div> -->
 </div>
+<!-- navbar ends -->
+<!-- navbar ends -->
 <!-- navbar ends -->
 <div class="audioContainer">
     <div class="mainContainer">
